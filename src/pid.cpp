@@ -15,8 +15,14 @@ void wheel_control()
   motor1_target_vel = (-vel_kp * (forwardBackward  - (motor1_vel  + motor2_vel) / 2));
   motor2_target_vel = (-vel_kp * (forwardBackward  - (motor1_vel  + motor2_vel) / 2));
 
-  wheel_motor1_target = clampToRange((balance_kp * (motor1_target_vel - pitch - balance_offset - remoteBalanceOffset) + balance_kd * gyroY), -5, 5);
-  wheel_motor2_target = clampToRange((balance_kp * (motor2_target_vel - pitch - balance_offset - remoteBalanceOffset) + balance_kd * gyroY), -5, 5);
+  // 根据高度调整平衡控制参数
+  float height_factor = 1.0;
+  if (ZeparamremoteValue > 80) {
+    height_factor = 1.2;  // 高机身时增强平衡控制
+  }
+
+  wheel_motor1_target = clampToRange((balance_kp * height_factor * (motor1_target_vel - pitch - balance_offset - remoteBalanceOffset) + balance_kd * gyroY), -5, 5);
+  wheel_motor2_target = clampToRange((balance_kp * height_factor * (motor2_target_vel - pitch - balance_offset - remoteBalanceOffset) + balance_kd * gyroY), -5, 5);
 
   wheel_motor1_target = -wheel_motor1_target - 0.7 * steering;
   wheel_motor2_target = -wheel_motor2_target + 0.7 * steering;
@@ -29,11 +35,11 @@ void wheel_control()
 PIDValues  interpolatePID(int y_height) {
   if(Shake_shoulder == 0)
   {
-      // 已知数据点
+      // 已知数据点 - 调整参数以提高高机身稳定性
       float y0 = 0, y1 = 80, y2 = 150;
-      PIDValues pid0 = {-0.55,-0.155, 0.048, 3.5};
-      PIDValues pid1 = {-0.55,-0.163,0.06, 4.5};
-      PIDValues pid2 = {-0.54,-0.148, 0.06, 6};
+      PIDValues pid0 = {-0.55,-0.155, 0.048, 3.5};  // 低机身参数
+      PIDValues pid1 = {-0.55,-0.163,0.06, 4.5};    // 中机身参数
+      PIDValues pid2 = {-0.52,-0.175,0.072, 7.0};   // 高机身参数 - 增强稳定性
       PIDValues result;
       if (y_height <= y1) 
       {
@@ -46,7 +52,7 @@ PIDValues  interpolatePID(int y_height) {
       } 
       else 
       {
-          speed_limit = 3;
+          speed_limit = 2;  // 降低高机身时的速度限制
           float t = (y_height - y1) / (y2 - y1);
           vel_kp = pid1.linear_vel_kp + t * (pid2.linear_vel_kp - pid1.linear_vel_kp);
           balance_kp = pid1.linear_balance_kp + t * (pid2.linear_balance_kp - pid1.linear_balance_kp);
