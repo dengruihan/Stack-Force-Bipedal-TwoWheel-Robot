@@ -75,6 +75,24 @@ String serialReceiveUserCommand()
     if (inChar == '\n')
     {
       command = received_chars;
+      command.trim(); // 去除前后空格
+      
+      // 检查控制模式切换命令
+      if (command.equals("lqr")) {
+        extern bool use_lqr_control; // 引用主程序中的控制开关
+        use_lqr_control = true;
+        Serial.println("已切换到LQR控制模式");
+        received_chars = "";
+        return command;
+      }
+      else if (command.equals("pid")) {
+        extern bool use_lqr_control;
+        use_lqr_control = false;
+        Serial.println("已切换到PID控制模式");
+        received_chars = "";
+        return command;
+      }
+      
       int commaPosition = command.indexOf(',');
       int newlinePosition = command.indexOf('\n');
       if (commaPosition != -1 && newlinePosition != -1) //给的第一个值

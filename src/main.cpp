@@ -13,6 +13,7 @@
 #include "robot.h"
 #include "can.h"
 #include "pid.h"
+#include "lqr.h"
 
 #define _constrain(amt, low, high) ((amt) < (low) ? (low) : ((amt) > (high) ? (high) : (amt))) // 限幅函数
 
@@ -20,6 +21,7 @@ MPU6050 mpu6050 = MPU6050(Wire);//实例化MPU6050
 hw_timer_t *timer = NULL; // Timer for accurate pulse width measurement
 portMUX_TYPE timerMux = portMUX_INITIALIZER_UNLOCKED;
 int cnt;
+bool use_lqr_control = true;  // LQR控制开关：true=LQR控制，false=PID控制
 
 void IMUTask(void *pvParameters);
 void testdataprint(); //调试打印函数
@@ -38,6 +40,14 @@ void setup()
   delay(3000);
   CAN_Control();//使能关节电机
   delay(1000);
+  
+  // 初始化LQR控制器
+  if (use_lqr_control) {
+    lqr_init();
+    Serial.println("系统启动 - 使用LQR控制模式");
+  } else {
+    Serial.println("系统启动 - 使用PID控制模式");
+  }
 }
 
 
@@ -45,17 +55,28 @@ void loop()
 {
 
   serialReceiveUserCommand();                                 // 串口数据输入处理 用于调试pid用
-  PIDValues pid = interpolatePID(ZeparamremoteValue);         //PID线性拟合函数
-  wheel_control();                                            // 轮子 霍尔电机PID控制函数
+  
+  // 控制算法选择
+  if (use_lqr_control) {
+    lqr_wheel_control();                                      // LQR轮子控制函数
+  } else {
+    PIDValues pid = interpolatePID(ZeparamremoteValue);       //PID线性拟合函数
+    wheel_control();                                          // 轮子 霍尔电机PID控制函数
+  }
   CAN_Control();                                              // CAN 关节电机控制函数
   remote_switch();                                            // 遥控开关
   jump_control();                                             // 机器人跳跃控制
   inverseKinematics();                                           // 运动学逆解
   robot_control();                                            // 机器人行为控制
-  sendMotorTargets(up_start * wheel_motor1_target, up_start * wheel_motor2_target); // 发送控制轮毂电机的目标值
+  // 发送控制轮毂电机的目标值 - 根据控制模式选择相应的目标值
+  if (use_lqr_control) {
+    sendMotorTargets(up_start * wheel_motor1_target_lqr, up_start * wheel_motor2_target_lqr);
+  } else {
+    sendMotorTargets(up_start * wheel_motor1_target, up_start * wheel_motor2_target);
+  }
   storeFilteredPPMData();                                     // 对ppm数据进行滤波处理 避免数据大幅度跳动
   mapPPMToRobotControl();                                     // 处理遥控器数据 将其映射为机器人行为控制
-  // testdataprint();                                      // 测试数据打印 可以打印输出相关调节信息
+  testdataprint();                                            // 测试数据打印 可以打印输出相关调节信息
 
 }
 
@@ -65,13 +86,27 @@ void testdataprint()
   if (cnt++ > 5000)
   {
     cnt = 0;
-    Serial.print(gyroZ);
-    Serial.print("\t");
+    Serial.print("模式: ");
+    Serial.print(use_lqr_control ? "LQR" : "PID");
+    Serial.print("\t角度: ");
     Serial.print(pitch);
-    Serial.print("\t");
+    Serial.print("\t角速度: ");
     Serial.print(gyroY);
-    Serial.print("\t");
-    Serial.println(ZeparamremoteValue);
+    Serial.print("\t高度: ");
+    Serial.print(ZeparamremoteValue);
+    
+    if (use_lqr_control) {
+      Serial.print("\tLQR输出1: ");
+      Serial.print(wheel_motor1_target_lqr);
+      Serial.print("\tLQR输出2: ");
+      Serial.print(wheel_motor2_target_lqr);
+    } else {
+      Serial.print("\tPID输出1: ");
+      Serial.print(wheel_motor1_target);
+      Serial.print("\tPID输出2: ");
+      Serial.print(wheel_motor2_target);
+    }
+    Serial.println();
   }
 }
 //启动线程

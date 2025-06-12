@@ -7,6 +7,7 @@
 #include "CAN_comm.h"
 #include "can.h"
 #include "pid.h"
+#include "lqr.h"
 
 // 逆解控制参数
 #define L1 150
@@ -46,5 +47,6 @@ float mapJoystickValueInt(int inputValue);
 float mapJoystickValuesteering(int inputValue);
 int trot(int inputValue);
 void get_origin_pos();
+void lqr_wheel_control();  // LQR轮子控制函数声明
 
 #endif
