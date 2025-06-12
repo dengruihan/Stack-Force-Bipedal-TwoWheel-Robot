@@ -7,7 +7,7 @@ motionControlParams LeftMotionControlParams;
 motionControlParams RightMotionControlParams;
 motorsparam motorsParam;
 
-float roll_kp = 0.0035, roll_kd = -0.009;  //机器人自稳Kp、Kd值 - 增强高机身稳定性
+float roll_kp = 0.0020, roll_kd = -0.006;  //机器人自稳Kp、Kd值 - 增强高机身稳定性
 
 float leftY = 120, rightY = 150;  //机器人Y轴方向腿部高度
 float leftX = 60, rightX = 60;    //机器人X轴方向腿部高度
@@ -77,13 +77,6 @@ void mapPPMToRobotControl()
   // 用于调节重心偏置
   remoteBalanceOffset = mapJoystickValueInt(filteredPPMValues[2]);
   
-  // 高度自适应平衡偏移 - 高机身时自动调整重心
-  float height_balance_offset = 0;
-  if (ZeparamremoteValue > 100) {
-    height_balance_offset = (ZeparamremoteValue - 100) * 0.01;  // 每增加1mm高度，偏移0.01
-    height_balance_offset = constrainValue(height_balance_offset, 0, 2.0);  // 限制最大偏移
-  }
-  remoteBalanceOffset += height_balance_offset;
   
   // 用于控制转向
   steering = -0.03 * (-mapJoystickValuesteering(filteredPPMValues[5]) - gyroZ);
