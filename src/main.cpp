@@ -1,18 +1,4 @@
-#include <Arduino.h>
-#include <Wire.h>
-#include "MPU6050.h"
-#include "bipedal_data.h"
-#include "CAN_comm.h"
-#include "config.h"
-#include <WiFi.h>
-#include <WiFiUdp.h>
-#include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
-#include "ppm.h"
-#include "Motor.h"
-#include "robot.h"
-#include "can.h"
-#include "pid.h"
+#include "main.h"
 
 #define _constrain(amt, low, high) ((amt) < (low) ? (low) : ((amt) > (high) ? (high) : (amt))) // 限幅函数
 
