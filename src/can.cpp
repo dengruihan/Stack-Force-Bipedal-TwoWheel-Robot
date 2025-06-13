@@ -78,7 +78,7 @@ void CAN_Control()
       recNum = 0;
     }
     //打印关节电机电角度 3 2 1 4
-    // Serial.printf("%.2f,%.2f,%.2f,%.2f\n", devicesState[0].pos, devicesState[1].pos, devicesState[2].pos,devicesState[3].pos);
+    Serial.printf("%.2f,%.2f,%.2f,%.2f\n", devicesState[0].pos, devicesState[1].pos, devicesState[2].pos,devicesState[3].pos);
     
     prev_ts = current_ts;   
   }
