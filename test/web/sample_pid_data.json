@@ -1,0 +1,272 @@
+[
+  {
+    "type": "pid_data",
+    "timestamp": 1749831440.1783261,
+    "simulation_time": 0.05,
+    "vel_output": 0.007997866837326834,
+    "balance_output": 0.01798920194383338,
+    "balance_kd_output": 0.11966265817346489,
+    "robot_output": 0.005999775002531236
+  },
+  {
+    "type": "pid_data",
+    "timestamp": 1749831440.1783319,
+    "simulation_time": 0.1,
+    "vel_output": 0.015982938793834542,
+    "balance_output": 0.035913662186675806,
+    "balance_kd_output": 0.11865252935232506,
+    "robot_output": 0.011998200080998264
+  },
+  {
+    "type": "pid_data",
+    "timestamp": 1749831440.178335,
+    "simulation_time": 0.15000000000000002,
+    "vel_output": 0.02394244145778388,
+    "balance_output": 0.05370887202774726,
+    "balance_kd_output": 0.1169752928482732,
+    "robot_output": 0.017993925615064098
+  },
+  {
+    "type": "pid_data",
+    "timestamp": 1749831440.178338,
+    "simulation_time": 0.2,
+    "vel_output": 0.031863641322849204,
+    "balance_output": 0.07131078792814037,
+    "balance_kd_output": 0.11464037869507271,
+    "robot_output": 0.02398560259177784
+  },
+  {
+    "type": "pid_data",
+    "timestamp": 1749831440.1783402,
+    "simulation_time": 0.25,
+    "vel_output": 0.03973386615901225,
+    "balance_output": 0.08865606199840186,
+    "balance_kd_output": 0.11166091462947772,
+    "robot_output": 0.02997188290909694
+  },
+  {
+    "type": "pid_data",
+    "timestamp": 1749831440.1783419,
+    "simulation_time": 0.3,
+    "vel_output": 0.04754052528542692,
+    "balance_output": 0.10568226998252699,
+    "balance_kd_output": 0.10805365228232125,
+    "robot_output": 0.03595141967920442
+  },
+  {
+    "type": "pid_data",
+    "timestamp": 1749831440.178344,
+    "simulation_time": 0.35,
+    "vel_output": 0.05527112971282275,
+    "balance_output": 0.12232813591787103,
+    "balance_kd_output": 0.10383887299475297,
+    "robot_output": 0.041922867531553
+  },
+  {
+    "type": "pid_data",
+    "timestamp": 1749831440.178347,
+    "simulation_time": 0.39999999999999997,
+    "vel_output": 0.06291331212322356,
+    "balance_output": 0.13853375266244486,
+    "balance_kd_output": 0.0990402737891614,
+    "robot_output": 0.04788488291556774
+  },
+  {
+    "type": "pid_data",
+    "timestamp": 1749831440.178349,
+    "simulation_time": 0.44999999999999996,
+    "vel_output": 0.07045484665501799,
+    "balance_output": 0.15424079749593392,
+    "balance_kd_output": 0.09368483413589362,
+    "robot_output": 0.05383612440293931
+  },
+  {
+    "type": "pid_data",
+    "timestamp": 1749831440.1783512,
+    "simulation_time": 0.49999999999999994,
+    "vel_output": 0.0778836684617301,
+    "balance_output": 0.16939274201851057,
+    "balance_kd_output": 0.08780266426485851,
+    "robot_output": 0.05977525298943968
+  },
+  {
+    "type": "pid_data",
+    "timestamp": 1749831440.1783528,
+    "simulation_time": 0.5499999999999999,
+    "vel_output": 0.08518789301319991,
+    "balance_output": 0.1839350555920301,
+    "balance_kd_output": 0.0814268358748608,
+    "robot_output": 0.06570093239619239
+  },
+  {
+    "type": "pid_data",
+    "timestamp": 1749831440.1783712,
+    "simulation_time": 0.6,
+    "vel_output": 0.1292981691516152,
+    "balance_output": 0.19781540159144193,
+    "balance_kd_output": 0.07459319619247974,
+    "robot_output": 0.07161182937032967
+  },
+  {
+    "type": "pid_data",
+    "timestamp": 1749831440.1783738,
+    "simulation_time": 0.65,
+    "vel_output": 0.1391264385962463,
+    "balance_output": 0.21098382576012306,
+    "balance_kd_output": 0.06734016642592096,
+    "robot_output": 0.07750661398496878
+  },
+  {
+    "type": "pid_data",
+    "timestamp": 1749831440.178376,
+    "simulation_time": 0.7000000000000001,
+    "vel_output": 0.14873213541784736,
+    "balance_output": 0.2233929359912578,
+    "balance_kd_output": 0.05970852574700724,
+    "robot_output": 0.08338395993843983
+  },
+  {
+    "type": "pid_data",
+    "timestamp": 1749831440.1783779,
+    "simulation_time": 0.7500000000000001,
+    "vel_output": 0.15809989255060994,
+    "balance_output": 0.234998072888245,
+    "balance_kd_output": 0.051741182015839916,
+    "robot_output": 0.0892425448526982
+  },
+  {
+    "type": "pid_data",
+    "timestamp": 1749831440.17838,
+    "simulation_time": 0.8000000000000002,
+    "vel_output": 0.1672147235814698,
+    "balance_output": 0.2457574704902995,
+    "balance_kd_output": 0.043482930537200815,
+    "robot_output": 0.09508105057085386
+  },
+  {
+    "type": "pid_data",
+    "timestamp": 1749831440.1783822,
+    "simulation_time": 0.8500000000000002,
+    "vel_output": 0.1760620467251712,
+    "balance_output": 0.2556324065848089,
+    "balance_kd_output": 0.03498020220505303,
+    "robot_output": 0.10089816345375124
+  },
+  {
+    "type": "pid_data",
+    "timestamp": 1749831440.1783848,
+    "simulation_time": 0.9000000000000002,
+    "vel_output": 0.18462770815201254,
+    "balance_output": 0.2645873420654843,
+    "balance_kd_output": 0.026280802451164955,
+    "robot_output": 0.10669257467553249
+  },
+  {
+    "type": "pid_data",
+    "timestamp": 1749831440.178387,
+    "simulation_time": 0.9500000000000003,
+    "vel_output": 0.19289800463095444,
+    "balance_output": 0.272590048834765,
+    "balance_kd_output": 0.017433642465582107,
+    "robot_output": 0.11246298051811765
+  },
+  {
+    "type": "pid_data",
+    "timestamp": 1749831440.178389,
+    "simulation_time": 1.0000000000000002,
+    "vel_output": 0.2008597054518664,
+    "balance_output": 0.2796117257901679,
+    "balance_kd_output": 0.008488464200124295,
+    "robot_output": 0.11820808266453585
+  },
+  {
+    "type": "pid_data",
+    "timestamp": 1749831440.178391,
+    "simulation_time": 1.0500000000000003,
+    "vel_output": 0.20850007359184067,
+    "balance_output": 0.2856271024771547,
+    "balance_kd_output": -0.000504439298962645,
+    "robot_output": 0.12392658849104117
+  },
+  {
+    "type": "pid_data",
+    "timestamp": 1749831440.178398,
+    "simulation_time": 1.1000000000000003,
+    "vel_output": 0.27746599640362907,
+    "balance_output": 0.2906145300354796,
+    "balance_kd_output": -0.009494506656808116,
+    "robot_output": 0.12961721135794738
+  },
+  {
+    "type": "pid_data",
+    "timestamp": 1749831440.1784,
+    "simulation_time": 1.1500000000000004,
+    "vel_output": 0.2864165832130919,
+    "balance_output": 0.2945560591117079,
+    "balance_kd_output": -0.018431192444359326,
+    "robot_output": 0.13527867089911655
+  },
+  {
+    "type": "pid_data",
+    "timestamp": 1749831440.1784031,
+    "simulation_time": 1.2000000000000004,
+    "vel_output": 0.29490896458835947,
+    "balance_output": 0.29743750445750594,
+    "balance_kd_output": -0.027264251363170528,
+    "robot_output": 0.14090969331003603
+  },
+  {
+    "type": "pid_data",
+    "timestamp": 1749831440.178405,
+    "simulation_time": 1.2500000000000004,
+    "vel_output": 0.30292955453084286,
+    "balance_output": 0.29924849598121633,
+    "balance_kd_output": -0.03594402074274897,
+    "robot_output": 0.14650901163441907
+  },
+  {
+    "type": "pid_data",
+    "timestamp": 1749831440.178407,
+    "simulation_time": 1.3000000000000005,
+    "vel_output": 0.31046552180760195,
+    "balance_output": 0.2999825160689899,
+    "balance_kd_output": -0.0444216997621545,
+    "robot_output": 0.15207536604926464
+  },
+  {
+    "type": "pid_data",
+    "timestamp": 1749831440.1784089,
+    "simulation_time": 1.3500000000000005,
+    "vel_output": 0.3175048104785812,
+    "balance_output": 0.2996369230411572,
+    "balance_kd_output": -0.0526496238259674,
+    "robot_output": 0.15760750414831223
+  },
+  {
+    "type": "pid_data",
+    "timestamp": 1749831440.178411,
+    "simulation_time": 1.4000000000000006,
+    "vel_output": 0.3240361591835419,
+    "balance_output": 0.29821296065942277,
+    "balance_kd_output": -0.060581532551983,
+    "robot_output": 0.16310418122382814
+  },
+  {
+    "type": "pid_data",
+    "timestamp": 1749831440.1784132,
+    "simulation_time": 1.4500000000000006,
+    "vel_output": 0.3300491191578362,
+    "balance_output": 0.295715753650666,
+    "balance_kd_output": -0.06817282986390885,
+    "robot_output": 0.1685641605466593
+  },
+  {
+    "type": "pid_data",
+    "timestamp": 1749831440.178415,
+    "simulation_time": 1.5000000000000007,
+    "vel_output": 0.33553407094820165,
+    "balance_output": 0.2921542892634585,
+    "balance_kd_output": -0.07538083472672878,
+    "robot_output": 0.17398621364449218
+  }
+]

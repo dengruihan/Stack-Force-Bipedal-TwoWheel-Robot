@@ -15,7 +15,7 @@ struct PIDValues {
 extern float vel_kp ;
 extern float balance_kp ;
 extern float balance_kd ;
-extern float turn_kp ;
+extern float robot_kp ;
 
 extern float wheel_motor1_target, wheel_motor2_target; // 电机目标值
 extern int speed_limit; //轮毂电机速度限制

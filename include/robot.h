@@ -7,6 +7,7 @@
 #include "CAN_comm.h"
 #include "can.h"
 #include "pid.h"
+#include "ArduinoJson.h"
 
 // 逆解控制参数
 #define L1 150
@@ -46,5 +47,12 @@ float mapJoystickValueInt(int inputValue);
 float mapJoystickValuesteering(int inputValue);
 int trot(int inputValue);
 void get_origin_pos();
+
+class RobotParam {
+public:
+    void parseBasic(StaticJsonDocument<300>& doc);
+};
+
+extern RobotParam rp;
 
 #endif
