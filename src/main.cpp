@@ -32,8 +32,12 @@ void setup()
   Wire.begin(1, 2, 400000UL);//初始化IIC
   mpu6050.begin(); //初始化MPU陀螺仪
 
+  Open_thread_function();//启动线程
+  Serial.begin(115200);//初始化调试串口
 
+  Serial.println("MPU6050 initializing...");
   #ifdef USE_WEB_SERVER
+      Serial.println("Web server starting...");
       // Wifi初始化
       WiFi_SetAP();
       // set_sta_wifi();      // ESP-01S STA模式接入WiFi网络
@@ -42,9 +46,7 @@ void setup()
       websocket.begin();
       websocket.onEvent(webSocketEventCallback);
   #endif
-
-  Open_thread_function();//启动线程
-  Serial.begin(115200);//初始化调试串口
+  
   CANInit(); // 初始化CAN
   ppm_init(); //遥控器读取中断初始化
   motorInit();
@@ -79,7 +81,7 @@ void loop()
 
   #if DEBUG_TIME == true
     loopCount++;
-    unsigned long currentTime = millis();
+    unsigned long currentTime = micros();
     Serial.println(currentTime - __lastTime);
     __lastTime = currentTime;
   #endif
@@ -158,7 +160,7 @@ void web_loop()
 
 void basicWebCallback(void)
 {
-  webserver.send(300, "text/html", basic_web);
+  webserver.send(200, "text/html", basic_web);
 }
 
 void webSocketEventCallback(uint8_t num, WStype_t type, uint8_t *payload, size_t length)

@@ -24,7 +24,7 @@
 
 // 配置AP（热点）模式相关参数
 const char *AP_SSID = "YUNGU-ROBOT-BIG1";
-const char *AP_PSW = "mujiang";
+const char *AP_PSW = "mujianglaoshi";
 
 IPAddress AP_IP(192, 168, 1, 1);
 IPAddress AP_GATEWAY(192, 168, 1, 1);
