@@ -28,9 +28,9 @@ void setup()
 void loop()
 {
   serialReceiveUserCommand();                                 // 串口数据输入处理 用于调试pid用
-  PIDValues pid = interpolatePID(ZeparamremoteValue);         //PID线性拟合函数
+  // PIDValues pid = interpolatePID(ZeparamremoteValue);         //PID线性拟合函数
   wheel_control();                                            // 轮子 霍尔电机PID控制函数
-  CAN_Control();                                              // CAN 关节电机控制函数
+  CAN_Control();                                         // CAN 关节电机控制函数
   remote_switch();                                            // 遥控开关
   jump_control();                                             // 机器人跳跃控制
   inverseKinematics();                                           // 运动学逆解
@@ -66,7 +66,7 @@ void IMUTask(void *pvParameters)
     mpu6050.update();
     roll = mpu6050.getAngleX();
     pitch = mpu6050.getAngleY();
-    yaw = mpu6050.getAngleZ();
+    //yaw = mpu6050.getAngleZ();
     gyroX = mpu6050.getGyroX();
     gyroZ = mpu6050.getGyroZ();
     // 这里是设置一定死区 避免数据的波动

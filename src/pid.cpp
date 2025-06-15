@@ -1,9 +1,9 @@
 #include "pid.h"
 
 // PID参数
-float vel_kp = -0;//速度环
-float balance_kp = -0;//直立环Kp
-float balance_kd = 0;//直立环K
+float vel_kp = -0.55;//速度环
+float balance_kp = -0.155;//直立环Kp
+float balance_kd = 0.048;//直立环K
 int speed_limit = 3; //轮毂电机速度限制
 float motor1_target_vel = 0, motor2_target_vel = 0;
 float wheel_motor1_target = 0, wheel_motor2_target = 0; // 电机目标值
@@ -15,14 +15,8 @@ void wheel_control()
   motor1_target_vel = (-vel_kp * (forwardBackward  - (motor1_vel  + motor2_vel) / 2));
   motor2_target_vel = (-vel_kp * (forwardBackward  - (motor1_vel  + motor2_vel) / 2));
 
-  // 根据高度调整平衡控制参数
-  float height_factor = 1.0;
-  if (ZeparamremoteValue > 80) {
-    height_factor = 1.05;  // 高机身时增强平衡控制
-  }
-
-  wheel_motor1_target = clampToRange((balance_kp * height_factor * (motor1_target_vel - pitch - balance_offset - remoteBalanceOffset) + balance_kd * gyroY), -5, 5);
-  wheel_motor2_target = clampToRange((balance_kp * height_factor * (motor2_target_vel - pitch - balance_offset - remoteBalanceOffset) + balance_kd * gyroY), -5, 5);
+  wheel_motor1_target = clampToRange((balance_kp * (motor1_target_vel - pitch - balance_offset - remoteBalanceOffset) + balance_kd * gyroY), -5, 5);
+  wheel_motor2_target = clampToRange((balance_kp * (motor2_target_vel - pitch - balance_offset - remoteBalanceOffset) + balance_kd * gyroY), -5, 5);
 
   float deadzone = 0.1;
   if (abs(wheel_motor1_target) < deadzone) {
