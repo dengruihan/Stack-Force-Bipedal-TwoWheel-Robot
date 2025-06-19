@@ -5,8 +5,8 @@
 #define DEBUG_DURATION 100 // 輸出頻率，建議為10，
 #define DEBUG_REMOTOR false // 打印遥控器数据
 #define DEBUG_CONTROL false // 打印控制数据
-#define DEBUG_MPU true // 打印陀螺儀的調試信息
-#define DEBUG_PID false // 打印电机数据
+#define DEBUG_MPU false // 打印陀螺儀的調試信息
+#define DEBUG_PID true // 打印电机数据
 
 int cnt;
 unsigned long __lastTime = 0;
