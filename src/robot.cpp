@@ -192,8 +192,22 @@ void inverseKinematics()
 // 轮足机器人控制部分程序
 // int aaa = 0;
 float Shake_shoulder_vakue = 0;
+bool is_initializing = true; // 初始化标志位
+bool first_time_init = true;
+unsigned long init_time = 0;
+
 void robot_control()
 {
+  if (is_initializing) {
+    if (first_time_init) {
+      Am_kp = 0.38;
+      init_time = millis();
+      first_time_init = false;
+    } else if (millis() - init_time > 2000) {
+      Am_kp = 1.3;
+      is_initializing = false;
+    }
+  }
   if(Shake_shoulder == 1)//抖肩
   {
     ZeparamremoteValue = 50;
@@ -258,7 +272,7 @@ float mapJoystickValuevel(int inputValue)
     inputValue = 2000;
   if (inputValue < 1600 && inputValue > 1400)
     inputValue = 1500;
-  float mappedValue = (inputValue - 1500) / 100.0;
+  float mappedValue = (inputValue - 1500) / 50.0;
   return mappedValue;
 }
 

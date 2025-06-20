@@ -50,7 +50,7 @@ void testdataprint()
     #if DEBUG_REMOTOR == true
       for (int i = 0; i < NUM_CHANNELS; i++)
       {
-        Serial.print(filteredPPMValues[i]);
+        Serial.print(ppmValues[i]);
         if (i< NUM_CHANNELS-1) Serial.print(",");
         else Serial.println();
       }
